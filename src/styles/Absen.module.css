@@ -1,0 +1,69 @@
+/* styles/AbsenSection.module.css */
+.absenSection {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dateTime {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  .date {
+    font-size: 16px;
+    font-weight: 600;
+    color: #555555;
+    margin-bottom: 8px;
+  }
+  
+  .clock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .clock span {
+    margin: 0 4px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+  }
+  
+  .absenMasuk,
+  .absenPulang {
+    background-color: #e63946;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .absenMasuk:hover,
+  .absenPulang:hover {
+    background-color: #c51d2d;
+  }
+  
+  .absenPulang {
+    background-color: #a8a8a8;
+  }
+  
+  .absenPulang:hover {
+    background-color: #878787;
+  }
+  
