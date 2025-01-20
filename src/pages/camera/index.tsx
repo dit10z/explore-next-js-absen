@@ -2,7 +2,9 @@
 import { useRef, useState } from "react";
 import Absen from "@/components/fragments/Absen";
 import styles from "@/styles/CameraPage.module.css";
-import { Home, People, MoreVert, AccountCircle } from "@mui/icons-material";
+import BottomNavigation from "../../components/fragments/BottomNavigation";
+import Head from "next/head";
+import Image from "next/image";
 
 const CameraPage = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
@@ -57,107 +59,145 @@ const CameraPage = () => {
   };
 
   return (
-    <div className="font-sans">
-      {/* <h1 className="text-3xl font-bold underline">Kamera di Next.js</h1> */}
-      <Absen
-        date="Selasa, 27 Juni 2023"
-        time="07:35:12"
-        onAbsenMasuk={openModal}
-        onAbsenPulang={openModal}
-      />
-      <h2 className="flex justify-center text-xl font-bold my-4">
-        Riwayat Absen Saat ini:
-      </h2>
-
-      <div className="mt-6 bg-white shadow-md rounded-lg p-6 w-full max-w-md mx-auto">
-        <div className="flex items-center space-x-4 mb-4">
-          <h2 className="text-md font-semibold text-gray-800">
-            Status Absensi:
-          </h2>
-          <span className="bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-gray-300 dark:text-gray-600">
-            Belum Absen
-          </span>
+    <div className="font-sans bg-gray-100 min-h-screen relative">
+      <div className="bg-primary text-white rounded-b-2xl shadow-md p-6 mb-6 h-48 sm:flex sm:flex-col sm:items-center sm:justify-center lg:h-64">
+        <div className="flex items-center mb-4 ">
+          <div className="w-12 h-12 bg-white text-red-500 rounded-full flex items-center justify-center mr-4">
+            <Image src="/logo.svg" alt="Logo" width={120} height={32} />
+          </div>
+          <div>
+            <p className="text-xs">Halo, Selamat Pagi!</p>
+            <h2 className="text-lg font-semibold">Dudung Supadung</h2>
+          </div>
         </div>
-        <div className="flex space-x-4 mt-6">
-          {/* Left side: Jam Masuk */}
-          <div className="flex flex-row items-center w-48">
-            {image ? (
-              <img
-                src={image}
-                alt="Captured"
-                className="rounded-lg w-20 h-20"
-              />
-            ) : (
-              <div className="flex items-center justify-center w-20 h-20 rounded-lg bg-gray-200 text-gray-500">
-                <span className="text-[8px]">No image captured</span>
-              </div>
-            )}
-            <div className="ml-4 flex flex-col">
-              <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                Jam Masuk:
-              </h3>
-              <p className="text-gray-600">00:00:00</p>
-            </div>
+        <div className="flex flex-row justify-between items-center -mt-2">
+          {/* Left Side: Icon with Text */}
+          <div className="flex flex-row items-center">
+            <Image
+              src="/ic_jabatan_dashboard.svg"
+              alt="Icon"
+              width={16}
+              height={16}
+              className="mr-2" // Add spacing between the icon and the text
+            />
+            <p className="text-[13px]">Manager R&D Dept.</p>
           </div>
 
-          {/* Right side: Jam Keluar */}
-          <div className="flex flex-row items-center w-48">
-            {image ? (
-              <img
-                src={image}
-                alt="Captured"
-                className="rounded-lg w-20 h-20"
-              />
-            ) : (
-              <div className="flex items-center justify-center w-20 h-20 rounded-lg bg-gray-200 text-gray-500">
-                <span className="text-[8px]">No image captured</span>
-              </div>
-            )}
-            <div className="ml-4 flex flex-col">
-              <h3 className="text-sm font-semibold text-gray-800 mb-2">
-                Jam Keluar:
-              </h3>
-              <p className="text-gray-600">00:00:00</p>
-            </div>
+          {/* Divider */}
+          <span className="mx-2 text-lg font-thin">|</span>
+
+          {/* Right Side: Text */}
+          <div className="flex flex-row items-center">
+            <Image
+              src="/ic_cabang_dashboard.svg"
+              alt="Icon"
+              width={16}
+              height={16}
+              className="mr-2" // Add spacing between the icon and the text
+            />
+            <p className="text-[13px]">Cab II Kota Bandung</p>
           </div>
         </div>
       </div>
+      <div className="container mx-auto px-6 sm:px-6 md:px-8 py-4">
+        <Head>
+          <title>Camera</title>
+        </Head>
 
-      {isModalOpen && (
-        <div className={styles.modal}>
-          <div className={styles.modalContent}>
-            <video ref={videoRef} width="640" height="480" autoPlay></video>
-            <canvas
-              ref={canvasRef}
-              width="640"
-              height="480"
-              style={{ display: "none" }}
-            ></canvas>
-            <div className={styles.modalButtons}>
-              <button onClick={takePhoto}>Ambil Foto</button>
-              <button onClick={closeModal}>Tutup</button>
+        {/* <h1 className="text-3xl font-bold underline">Kamera di Next.js</h1> */}
+        <Absen
+          date="Selasa, 27 Juni 2023"
+          time="07:35:12"
+          onAbsenMasuk={openModal}
+          onAbsenPulang={openModal}
+        />
+        <h2 className="flex sm:justify-center text-sm sm:text-xl font-bold mt-4">
+          Riwayat Absen Saat ini:
+        </h2>
+
+        <div className="mt-4 bg-white shadow-md rounded-lg p-4 w-full max-w-md mx-auto">
+          <div className="flex items-center space-x-4 mb-4">
+            <h2 className="text-sm sm:text-md font-semibold text-gray-800">
+              Status Absensi:
+            </h2>
+            <span className="bg-muted text-textGray text-xs font-medium px-2.5 py-0.5 rounded-full">
+              Belum Absen
+            </span>
+          </div>
+          <div className="flex space-x-4 mt-6">
+            {/* Left side: Jam Masuk */}
+            <div className="flex flex-row items-center w-48">
+              {image ? (
+                <img
+                  src={image}
+                  alt="Captured"
+                  className="rounded-lg w-16 h-16"
+                />
+              ) : (
+                <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-muted text-textGray">
+                  <span className="text-[8px]">No image captured</span>
+                </div>
+              )}
+              <div className="ml-1 sm:ml-4 flex flex-col">
+                <h3 className="text-[11px] sm:text-sm font-semibold text-textGray mb-1 sm:mb-2">
+                  Jam Masuk:
+                </h3>
+                <p className="text-textGray">00:00:00</p>
+              </div>
+            </div>
+
+            {/* Right side: Jam Keluar */}
+            <div className="flex flex-row items-center w-48">
+              {image ? (
+                <img
+                  src={image}
+                  alt="Captured"
+                  className="rounded-lg w-16 h-16"
+                />
+              ) : (
+                <div className="flex items-center justify-center w-16 h-16 rounded-lg bg-muted text-textGray">
+                  <span className="text-[8px]">No image captured</span>
+                </div>
+              )}
+              <div className="ml-1 sm:ml-4 flex flex-col">
+                <h3 className="text-[11px] sm:text-sm font-semibold text-textGray mb-1 sm:mb-2">
+                  Jam Keluar:
+                </h3>
+                <p className="text-textGray">00:00:00</p>
+              </div>
             </div>
           </div>
         </div>
-      )}
-      <div className="fixed bottom-0 w-full h-16 bg-white flex justify-around items-center shadow-lg">
-        <button className="text-gray-600 font-semibold flex flex-col items-center">
-          <Home className="text-gray-600" />
-          Dashboard
-        </button>
-        <button className="text-gray-600 font-semibold flex flex-col items-center">
-          <People className="text-gray-600" />
-          Info Pegawai
-        </button>
-        <button className="text-gray-600 font-semibold flex flex-col items-center">
-          <MoreVert className="text-gray-600" />
-          Lainnya
-        </button>
-        <button className="text-gray-600 font-semibold flex flex-col items-center">
-          <AccountCircle className="text-gray-600" />
-          Akun
-        </button>
+
+        {isModalOpen && (
+          <div className={styles.modal}>
+            <div className={styles.modalContent}>
+              <video ref={videoRef} width="640" height="480" autoPlay></video>
+              <canvas
+                ref={canvasRef}
+                width="640"
+                height="480"
+                style={{ display: "none" }}
+              ></canvas>
+              <div className={styles.modalButtons}>
+                <button
+                  className="bg-red-500 text-white px-4 py-2"
+                  onClick={takePhoto}
+                >
+                  Ambil Foto
+                </button>
+                <button
+                  className="bg-red-500 text-white px-4 py-2"
+                  onClick={closeModal}
+                >
+                  Tutup
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
+      <BottomNavigation />
     </div>
   );
 };

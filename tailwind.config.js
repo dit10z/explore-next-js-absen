@@ -10,6 +10,11 @@ export const theme = {
     fontFamily: {
       sans: ["var(--font-poppins-sans)", ...fontFamily.sans],
     },
+    colors: {
+      primary: "#B90101",
+      muted: "#E0E0E0",
+      textGray: "#828282",
+    }
   },
 };
 export const plugins = [];

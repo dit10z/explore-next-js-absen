@@ -1,6 +1,5 @@
 // components/Absen.tsx
 import Image from "next/image";
-import styles from "../../../styles/Absen.module.css";
 
 interface AbsenProps {
   date: string;
@@ -18,10 +17,10 @@ const Absen: React.FC<AbsenProps> = ({
   const [day, fullDate] = date.split(", ");
 
   return (
-    <div className="flex items-center justify-center">
-      <div className="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+    <div className="flex items-center justify-center -mt-28 sm:mt-0">
+      <div className="bg-white shadow-md rounded-xl p-4 w-full max-w-md">
         <div className="mb-6 flex justify-around items-center">
-          <div className="text-lg font-bold">
+          <div className="text-md sm:text-lg font-bold">
             <p>{day},</p>
             <p>{fullDate}</p>
           </div>
@@ -29,40 +28,42 @@ const Absen: React.FC<AbsenProps> = ({
             {time.split(":").map((unit, index) => (
               <div key={index} className="flex items-center">
                 <div className="w-10 h-10 flex items-center justify-center border border-gray-300 rounded-lg bg-gray-50">
-                  <span className="text-lg font-bold">{unit}</span>
+                  <span className="text-xl sm:text-lg font-normal">{unit}</span>
                 </div>
-                {index < 2 && <span className="text-lg font-bold mx-1">:</span>}
+                {index < 2 && (
+                  <span className="text-xl sm:text-lg font-bold mx-1">:</span>
+                )}
               </div>
             ))}
           </div>
         </div>
 
         {/* Flex container for the images */}
-        <div className="flex justify-around mb-4">
-          <div className="flex flex-col items-center">
+        <div className="flex justify-around">
+          <div className="flex flex-col items-center space-y-4">
             <Image
               src="/ic_absen_masuk.svg"
               alt="Absen Masuk"
-              width={150}
+              width={120}
               height={64}
             />
             <button
-              className="bg-red-500 text-white text-sm font-semibold px-8 py-4 rounded-full mt-2 transition-colors duration-300 hover:bg-red-600"
+              className="bg-primary text-white text-xs sm:text-sm font-semibold px-8 py-4 rounded-full mt-2 transition-colors duration-300 hover:bg-red-600"
               onClick={onAbsenMasuk}
             >
               Absen Masuk
             </button>
           </div>
 
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center space-y-4">
             <Image
               src="/ic_absen_keluar.svg"
               alt="Absen Keluar"
-              width={150}
+              width={120}
               height={64}
             />
             <button
-              className="bg-gray-400 text-white text-sm font-semibold px-8 py-4 rounded-full mt-2 transition-colors duration-300 hover:bg-gray-600"
+              className="bg-muted text-textGray text-xs sm:text-sm font-semibold px-8 py-4 rounded-full mt-2 transition-colors duration-300 "
               onClick={onAbsenPulang}
             >
               Absen Pulang
